@@ -2,6 +2,7 @@
 // Q1 変数と文字列
 $name = "相場";
 echo "私の名前は「" . $name . "」です。";
+echo "\n";
 
 // Q2 四則演算
 $num = 5 * 4;
@@ -147,5 +148,5 @@ function evaluateGrade($grade) {
 
 echo evaluateGrade("A") . "\n";
 echo evaluateGrade("X") . "\n";
-
+//１
 ?>
