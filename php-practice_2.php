@@ -123,4 +123,147 @@ $interval = $birth->diff(new DateTime('2025-11-03'));//2つの日付の差を Da
 echo "あの日から" . $interval->days . "日経過しました。\n";
 
 //２
+
+// Q3 オブジェクト-1 V
+class Student 
+{ 
+    public $studentId; 
+    public $studentName; 
+ 
+    public function __construct($id, $name) 
+    { 
+        $this->studentId = $id; 
+        $this->studentName = $name; 
+    } 
+ 
+    public function attend() 
+    { 
+        echo '授業に出席しました。'; 
+    } 
+} 
+ 
+// Studentクラスのインスタンスを作成 
+$student = new Student(120, "山田"); 
+ 
+// 出力 
+echo "学籍番号" . $student->studentId . "番の生徒は" . $student->studentName . "です。 
+"; 
+ 
+// var_dumpで中身を確認 
+var_dump($student); 
+
+//修正
+
+// Studentクラス（Q3・Q4統合）
+class Student
+{
+    public $studentId;
+    public $studentName;
+
+    public function __construct($id, $name)
+    {
+        $this->studentId = $id;
+        $this->studentName = $name;
+    }
+
+    // 引数があれば授業名、なければ出席メッセージのみ
+    public function attend($subject = null)
+    {
+        if ($subject) {
+            echo $this->studentName . "は" . $subject . "の授業に参加しました。学籍番号：" . $this->studentId . "\n";
+        } else {
+            echo "授業に出席しました。\n";
+        }
+    }
+}
+
+// Q3用インスタンス
+$student = new Student(120, "山田");
+echo "学籍番号" . $student->studentId . "番の生徒は" . $student->studentName . "です。\n";
+$student->attend();
+
+// var_dumpで中身を確認
+var_dump($student);
+
+
+// Q4用インスタンス
+$yamada = new Student(120, '山田');
+$yamada->attend('PHP');
+
+// var_dumpで中身を確認
+var_dump($yamada);
+
+
+// Q5 定義済みクラス
+// 問題1
+$today = new DateTime('2025-11-03');
+$today->modify('-1 month');
+echo $today->format('Y-m-d') . "\n";
+var_dump($today);
+
+// 問題2
+$birth = new DateTime('1992-04-25');
+$interval = $birth->diff(new DateTime('2025-11-03'));
+echo "あの日から" . $interval->days . "日経過しました。\n";
+var_dump($birth);
+var_dump($interval);
+
+//追加課題１
+class Pokemon {
+
+    public $name;
+    public $element;
+
+    // コンストラクタ
+    public function __construct($name, $element)
+    {
+        $this->name = $name;
+        $this->element = $element;
+    }
+
+    // attackメソッド
+    public function attack($skill)
+    {
+        echo "いけ、{$this->element}ポケモン{$this->name}！！{$skill}だ！！\n";
+    }
+}
+
+$pikachu = new Pokemon("ピカチュウ", "ネズミ");
+$pikachu->attack("10万ボルト");
+
+
+var_dump($pikachu);
+
+
+//追加課題２
+class Employee {
+
+    public $employeeId;
+    public $employeeName;
+
+    // コンストラクタ
+    public function __construct($employeeId, $employeeName)
+    {
+        $this->employeeId = $employeeId;
+        $this->employeeName = $employeeName;
+    }
+
+    // checkInメソッド
+    public function checkIn()
+    {
+        echo "{$this->employeeName}が出勤しました。 社員ID：{$this->employeeId}\n";
+    }
+}
+
+
+$employee = new Employee(1, "山田太郎");
+$employee->checkIn();
+
+
+var_dump($employee);
+
+//コンストラクタはオブジェクト生成時に呼ばれる初期化メソッド
+//オブジェクトはクラスという設計図から new を使って作られる実体（インスタンス）。
+//プロパティはオブジェクトの状態（データ）。メソッドはオブジェクトができること（操作）。
+//var_dump() は変数の型・値・（文字列ならバイト数）・配列やオブジェクトの内部構造を表示するデバッグ関数。
 ?>
