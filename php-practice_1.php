@@ -2,6 +2,7 @@
 // Q1 変数と文字列
 $name = "相場";
 echo "私の名前は「" . $name . "」です。";
+echo "\n";
 
 // Q2 四則演算
 $num = 5 * 4;
@@ -73,6 +74,23 @@ if (isset($kanto_capitals["埼玉県"]))//「埼玉県」というキーが配�
     echo "埼玉県の県庁所在地は、" . $kanto_capitals["埼玉県"] . "です。";
 }
 
+//Q8　修正
+$kanto_capitals = [
+    "東京都" => "新宿区",
+    "神奈川県" => "横浜市",
+    "千葉県" => "千葉市",
+    "埼玉県" => "さいたま市",
+    "栃木県" => "宇都宮市",
+    "群馬県" => "前橋市",
+    "茨城県" => "水戸市"
+];
+
+// foreach文で配列をループ
+foreach ($kanto_capitals as $prefecture => $capital) {
+    if ($prefecture === "埼玉県") {
+        echo $prefecture . "の県庁所在地は、" . $capital . "です。";
+    }
+}
 
 // Q9 連想配列-3
 $prefectures = [
@@ -147,5 +165,5 @@ function evaluateGrade($grade) {
 
 echo evaluateGrade("A") . "\n";
 echo evaluateGrade("X") . "\n";
-
+//１
 ?>
